@@ -1,0 +1,13 @@
+[dev]
+157.90.138.75
+
+[local]
+localhost ansible_connection=local
+
+[dev:vars]
+ansible_port=3031
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/id_rsa-remote-ansible
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3

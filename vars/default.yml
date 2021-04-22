@@ -1,0 +1,5 @@
+---
+docker_hub_username: <your-username>
+docker_hub_password: <your-password>
+docker_hub_repo: blue-green
+version: v1
