@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+
+  app:
+    image: msaadat/blue-green:{{ version }}.0.0
+    deploy:
+      replicas: 2
+      rollback_config:
+        parallelism: 1
+      update_config:
+        parallelism: 1
+        failure_action: rollback
+    ports:
+      - "3000:3000"
+    networks:
+      - network
+
+networks:
+  network:

@@ -1,0 +1,17 @@
+---
+- hosts: dev
+  vars_files:
+    - vars/default.yml
+  tasks:
+    - name: Copy stack file to the remote node
+      template:
+        src: app-stack.yml.j2
+        dest: "{{ ansible_user_dir }}/app-stack.yml"
+        mode: '0644'
+
+    - name: Deploy stack from a compose file
+      docker_stack:
+        state: present
+        name: blue-green
+        compose:
+          - "{{ ansible_user_dir }}/app-stack.yml"
