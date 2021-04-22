@@ -1,0 +1,27 @@
+---
+- hosts: dev
+# - hosts: local
+  vars_files:
+    - vars/default.yml
+  tasks:
+    - name: Log into DockerHub
+      docker_login:
+        username: "{{ docker_hub_username }}"
+        password: "{{ docker_hub_password }}"
+
+    - name: Copy apps dir
+      copy:
+        src: apps
+        dest: "{{ ansible_user_dir }}"
+        mode: '0755'
+
+    - name: Build an image and push it to dockerHub
+      docker_image:
+        build:
+          path: "{{ ansible_user_dir }}/apps/{{ item }}"
+          pull: yes
+        name: "{{ docker_hub_username }}/{{ docker_hub_repo }}"
+        tag: "{{ item }}"
+        push: yes
+        source: build
+      loop: [ 'v1.0.0','v2.0.0','v3.0.0','v4.0.0']
