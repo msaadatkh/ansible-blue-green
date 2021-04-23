@@ -61,6 +61,23 @@
         dest: /etc/nginx/sites-enabled/default
         state: link
       notify: Restart Nginx
+ 
+    - name: UFW - Allow SSH connection
+      ufw:
+        rule: allow
+        port: "{{ ansible_port|int }}"
+        proto: tcp
+
+    - name: UFW - Allow Nginx HTTP
+      ufw:
+        rule: allow
+        name: "Nginx HTTP"
+
+    - name: UFW - Deny all other incoming traffic by default
+      ufw:
+        state: enabled
+        policy: deny
+        direction: incoming
 
   handlers:
     - name: Restart Nginx
