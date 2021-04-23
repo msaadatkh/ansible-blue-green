@@ -17,6 +17,8 @@ In Dockerfile `Healthceck` is determined to help Service for making decision of 
 For rollback from current healthy version to another healthy version (Bonus point), you just need to change `version` variable in `vars` folder and apply the playbook just like before.
 
 ### Order of playbooks:
-- playbook-nginx-docker.yml (which installs Nginx and Docker)
-- playbook-build-push-images.yml (which build and push images from remote node to DockerHub)
-- playbook-deploy-stack.yml (which deploy/rollback between versions) 
+- `playbook-nginx-docker.yml` (which installs Nginx and Docker)
+- `playbook-build-push-images.yml` (which build and push images from remote node to DockerHub)
+- `playbook-deploy-stack.yml` (which deploy/rollback between versions) 
+
+DockerHub blue-green repo:  https://hub.docker.com/repository/docker/msaadat/blue-green
