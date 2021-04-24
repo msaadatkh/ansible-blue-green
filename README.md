@@ -1,7 +1,7 @@
 # Blue/Green deployment with Ansible and Docker Swarm
 
 ### Stack info
-- Remote node OS: `Ubuntu 20.04`
+- Remote node OS: `Ubuntu 18.04`
 - Docker version: `20.10.6`
 - Ansible version: `2.9.6`
 - Python versoin: `3.8.5`
